@@ -7,7 +7,9 @@
 
 	<div>
 		{% for question in question_list %}
-			<p>{{ question.title }}</p>
+			<a href="{% url 'home:question_detail' question.slug %}">
+				<p>{{ question.title }}</p>
+			</a>
 		{% endfor %}
 	</div>
 

@@ -13,3 +13,11 @@ class Questions(generic.ListView):
         return super(generic.ListView, self).get(request, *args, **kwargs)
 
     template_name = 'home/homepage.html'
+
+class QuestionDetail(generic.DetailView):
+    model = Question
+
+    def get(self, request, *args, **kwargs):
+        return super(generic.DetailView, self).get(request, *args, **kwargs)
+
+    template_name = 'home/question_detail.html'
