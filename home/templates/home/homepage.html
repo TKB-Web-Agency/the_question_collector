@@ -4,5 +4,13 @@
 	<div class="grid grid-cols-1 place-items-start p-8">
 		<h1 class="text-purple-700 font-mono font-bold text-3xl">Welcome to The Question Collector</h1>
 	</div>
+
+	<div>
+		{% for question in question_list %}
+			<p>{{ question.title }}</p>
+		{% endfor %}
+	</div>
+
+
 </body>
 
