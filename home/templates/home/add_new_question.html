@@ -1,0 +1,13 @@
+{% load tailwind_tags %}
+{% tailwind_css %}
+<body class="bg-gray-400">
+<a href="javascript:history.back()">Go Back</a>
+
+	<div class="grid grid-cols-1 place-items-start p-8">
+		<form action="{% url 'home:add_new_question' %}" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="OK">
+		</form>
+	</div>
+</body>
