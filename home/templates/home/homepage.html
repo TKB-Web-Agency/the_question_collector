@@ -8,7 +8,7 @@
 
 	<div>
 		{% for question in question_list %}
-			<a href="{% url 'home:question_detail' question.slug %}">
+			<a class="p-5" href="{% url 'home:question_detail' question.slug %}">
 				<p>{{ question.title }}</p>
 			</a>
 		{% endfor %}
