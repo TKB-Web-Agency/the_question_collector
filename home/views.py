@@ -42,4 +42,4 @@ def add_new_question(request):
 
     return render(request, 'home/add_new_question.html', {'form': form})
 
-
+#this is a comment so I an commit 
