@@ -993,4 +993,9 @@ select {
 	.md\:p-2 {
 		padding: 0.5rem;
 	}
+
+	.md\:text-2xl {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
 }
