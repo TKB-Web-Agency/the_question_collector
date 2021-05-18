@@ -894,6 +894,10 @@ select {
 	font-size: 1.5rem;
 	line-height: 2rem;
 }
+.text-xl {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+}
 .font-bold {
 	font-weight: 700;
 }
@@ -997,5 +1001,10 @@ select {
 	.md\:text-2xl {
 		font-size: 1.5rem;
 		line-height: 2rem;
+	}
+
+	.md\:text-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
 	}
 }
