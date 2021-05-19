@@ -1,8 +1,8 @@
 {% extends "home/base.html" %}
 
 {% block content %}
-<body class="bg-gray-400">
-<a href="javascript:history.back()">Go Back</a>
+
+{% include "home/back_button.html" %}
 
 	<div class="grid grid-cols-1 place-items-start p-8">
 		<form action="{% url 'home:add_new_question' %}" method="post">

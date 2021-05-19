@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<a href="javascript:history.back()">Go Back</a>
+{% include "home/back_button.html" %}
 
-<body class="bg-gray-400">
-	<h1 class="text-purple-700 font-mono text-3xl">{{ object.title }}</h1>
-	<p class="text-gray-500">{{ object.date_created }}</p>
+<div class="text-center">
+	<h1 class="p-3 text-indigo-100 text-lg">{{ object.title }}</h1>
+</div>
 
-</body>
+<div class="pr-2 grid place-items-end">
+	<p class="text-gray-800 hover:text-gray-600">{{ object.date_created }}</p>
+</div>
+
 
 {% endblock %} 
