@@ -1,5 +1,7 @@
-{% load tailwind_tags %}
-{% tailwind_css %}
+{% extends "home/base.html" %}
+
+{% block content %}
+
 <a href="javascript:history.back()">Go Back</a>
 
 <body class="bg-gray-400">
@@ -7,3 +9,5 @@
 	<p class="text-gray-500">{{ object.date_created }}</p>
 
 </body>
+
+{% endblock %} 
