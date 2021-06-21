@@ -1,16 +1,16 @@
 {% extends "home/base.html" %}
+{% load widget_tweaks %} 
 
 {% block content %}
 
-{% include "home/back_button.html" %}
 
-	<div class="grid grid-cols-1 place-items-start p-8">
+	<div class="grid grid-cols-1 place-items-center p-8">
+		<p class="text-indigo-100 text-2xl m-3" >Add New Question</p>
 		<form action="{% url 'home:add_new_question' %}" method="post">
 			{% csrf_token %}
-			{{ form }}
-			<input type="submit" value="OK">
+			{{ form.question|add_class:"rounded-lg bg-transparent text-indigo-100 border-2 border-ingigo-200 focus:ring-0" }}
+			<button class="m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" type="submit">Save Question</button>
 		</form>
 	</div>
-</body>
 
 {% endblock %} 
