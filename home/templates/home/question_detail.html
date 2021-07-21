@@ -7,7 +7,8 @@
 	<h1 class="p-3 text-indigo-100 text-lg max-w-prose">{{ object.title }}</h1>
 </div>
 
-<div class="pr-2 grid place-items-end">
+<div class="mr-12 grid place-items-end">
+	<a class="text-indigo-300" href="{% url 'accounts:profile' author=object.author %}">{{ object.author }}</a>
 	<p class="text-gray-800 hover:text-gray-600">{{ object.date_created }}</p>
 </div>
 

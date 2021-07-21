@@ -6,4 +6,5 @@ urlpatterns = [
         path('', views.Questions.as_view(), name='homepage'),
         path('<slug:slug>/', views.QuestionDetail.as_view(), name='question_detail'),
         path('add-new-question', views.add_new_question, name='add_new_question'),
+        path('add-new-category', views.add_new_category, name='add_new_category'),
     ]

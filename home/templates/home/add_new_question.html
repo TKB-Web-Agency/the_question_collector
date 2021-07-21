@@ -12,7 +12,7 @@
 			{{ form.question|add_class:"w-full rounded-lg bg-transparent text-indigo-100 border-2 border-ingigo-200 focus:ring-0" }}
 			<p class="mt-6 text-indigo-100 font-semibold text-lg">What categories does this question belong to?</p>
 			{{ form.categories|add_class:"ml-3 rounded-full checked:bg-blue-500 text-indigo-100" }}
-			<button class="bg-red-800 text-indigo-100 px-6 py-3">Add New Category</button>
+			<a class="float-left m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" href="{% url 'home:add_new_category' %}" >Add New Category</a>
 			<button class="float-right m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" type="submit">Save Question</button>
 		</form>
 		</div>

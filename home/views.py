@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.views import generic
-from .models import Question
+from .models import Question, Categories
 from accounts.models import CustomUser
-from .forms import QuestionForm
+from .forms import QuestionForm, CategoryForm
 import datetime
 from django.utils.text import slugify
 
@@ -50,4 +50,20 @@ def add_new_question(request):
 
     return render(request, 'home/add_new_question.html', {'form': form})
 
-#this is a comment so I an commit 
+def add_new_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category_title = form.cleaned_data['category']
+            slug = slugify(category_title)
+            
+            #Create new category object
+            new_category = Categories.objects.create(title=category_title, slug=slug)
+            new_category.save()
+            return redirect('home:add_new_question')
+
+    else:
+        form = CategoryForm()
+
+    return render(request, 'home/add_new_category.html', {'form': form})
+
