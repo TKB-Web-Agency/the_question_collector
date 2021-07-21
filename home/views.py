@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views import generic
 from .models import Question
+from accounts.models import CustomUser
 from .forms import QuestionForm
 import datetime
 from django.utils.text import slugify
@@ -32,9 +33,16 @@ def add_new_question(request):
         if form.is_valid():
             question_title = form.cleaned_data['question']
             slug = slugify(question_title)
-            new_item = Question.objects.create(title=question_title, slug=slug, date_created=datetime.datetime.now())
+            categories = form.cleaned_data.get("categories")
+
+            if request.user.is_authenticated:
+                user = request.user
+            else:
+                user = CustomUser.objects.get(uuid='b330235e-86ad-409f-bd9b-1f1d1bfa0aad')
+
+            new_item = Question.objects.create(title=question_title, slug=slug, author=user, date_created=datetime.datetime.now())
+            new_item.categories.set(categories)
             new_item.save()
-            print(new_item)
             return HttpResponseRedirect('/')
 
     else:

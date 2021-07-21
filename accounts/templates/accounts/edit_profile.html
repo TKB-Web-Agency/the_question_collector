@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="mt-12 mb-12 flex flex-col justify-center items-center">
+	<h1 class="text-gray-300 text-2xl mb-6">Edit Profile</h1>
+	<form action="{% url 'accounts:edit_profile' author=author %}" method="post">
+		{% csrf_token %}
+		<p class="text-gray-200 mt-3">Username</p>
+		{{ form.username|add_class:"rounded-lg w-full" }}
+		<p class="text-gray-200 mt-3">Email Address</p>
+		{{ form.email|add_class:"rounded-lg w-full" }}
+		<div class="flex items-end">
+		<p class="text-gray-200 mt-3">Profile Picture</p>
+		<p class="ml-2 mb-1 text-gray-500 text-xs">url to photo</p>
+		</div>
+		{{ form.picture|add_class:"rounded-lg w-full" }}
+		<p class="text-gray-200 mt-3">Website</p>
+		{{ form.website|add_class:"rounded-lg w-full" }}
+		<p class="text-gray-200 mt-3">Github</p>
+		{{ form.github|add_class:"rounded-lg w-full" }}
+		<p class="text-gray-200 mt-3">About</p>
+		{{ form.about|add_class:"rounded-lg w-full" }}
+	<div class="text-gray-800 text-center mt-6 m-3 p-3 bg-gray-300 rounded-lg">
+		<button class="" type="submit">Update Profile</button>
+</div>	
+</div>	
+{% endblock %}

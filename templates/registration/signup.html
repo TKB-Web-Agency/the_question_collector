@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="mt-12 flex flex-col justify-center items-center">
+	<h1 class="text-gray-300 text-2xl mb-6">Sign Up</h1>
+
+	{% if user.is_authenticated %}
+	<p class="text-gray-300 text-lg mb-2">You are already logged in.</p>
+	<a class="text-gray-500 text-sm hover:underline hover:text-gray-200" href="{% url 'home:homepage' %}">Go to homepage. </a>
+	{% else %}
+    <form method="post">
+	{% csrf_token %}
+		<p class="text-gray-300 text-xl ml-1"> Username: </p>
+		{{ form.username|add_class:"rounded-lg"}}
+		<p class="text-gray-300 mt-8 text-xl ml-1"> Password: </p>
+		{{ form.password1|add_class:"rounded-lg"}}
+		<p class="text-gray-300 mt-8 text-xl ml-1">Confirm Password: </p>
+		{{ form.password2|add_class:"rounded-lg" }}
+	<div class="text-gray-800 text-center mt-6 m-3 p-3 bg-gray-300 rounded-lg">
+		<button type="submit">Sign Up</button>
+	</div>
+  </form>
+<a class="text-gray-500 text-xs hover:underline hover:text-gray-200" href="{% url 'login' %}"> Already have an account? </a>
+{% endif %}
+ </div>
+{% endblock %}
