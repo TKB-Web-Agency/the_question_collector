@@ -5,12 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import MyUserCreationForm, UserUpdateForm
 from .models import CustomUser
 
-
+#Views Go Here
 class SignUpView(CreateView):
     form_class = MyUserCreationForm
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
-
 
 def profile(request, author):
     user = CustomUser.objects.get(username=author)

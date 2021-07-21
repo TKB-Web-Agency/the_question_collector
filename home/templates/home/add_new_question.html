@@ -5,7 +5,11 @@
 
 
 	<div class="grid grid-cols-1 place-items-center p-8">
-		<p class="text-indigo-100 text-2xl m-3" >Add New Question</p>
+		{% if user.is_authenticated %}
+		{% else %}
+			<p class="text-red-500 opacity-70">You are not currently logged in, if you submit a question it will be anonymous.</p>
+		{% endif %}
+		<p class="text-indigo-100 text-2xl mt-6 m-3" >Add New Question</p>
 		<div class="flex">
 		<form action="{% url 'home:add_new_question' %}" method="post">
 			{% csrf_token %}
