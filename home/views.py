@@ -38,7 +38,7 @@ def add_new_question(request):
             if request.user.is_authenticated:
                 user = request.user
             else:
-                user = CustomUser.objects.get(uuid='b330235e-86ad-409f-bd9b-1f1d1bfa0aad')
+                user = CustomUser.objects.get(uuid='bfd9134b-30f7-4645-9184-805084758b9c')
 
             new_item = Question.objects.create(title=question_title, slug=slug, author=user, date_created=datetime.datetime.now())
             new_item.categories.set(categories)
