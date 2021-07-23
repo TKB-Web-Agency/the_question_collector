@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views import generic
 from .models import Question, Categories
@@ -19,13 +19,34 @@ class Questions(generic.ListView):
 
     template_name = 'home/homepage.html'
 
-class QuestionDetail(generic.DetailView):
-    model = Question
+#class QuestionDetail(generic.DetailView):
+#   model = Question
+#
+#    def get(self, request, *args, **kwargs):
+#        return super(generic.DetailView, self).get(request, *args, **kwargs)
+#
+#    template_name = 'home/question_detail.html'
 
-    def get(self, request, *args, **kwargs):
-        return super(generic.DetailView, self).get(request, *args, **kwargs)
+def filter_category(request, slug):
+    category = Categories.objects.get(slug=slug)
+    queryset = Question.objects.filter(categories=category.id)
 
-    template_name = 'home/question_detail.html'
+    context = {
+        'question_list': queryset,
+        }
+
+    return render(request, 'home/homepage.html', context)
+
+def question_detail(request, slug):
+    question = get_object_or_404(Question, slug=slug)
+
+    context = {
+        'object': question,
+        }
+
+    return render(request, 'home/question_detail.html', context)
+
+
 
 def add_new_question(request):
     if request.method == 'POST':

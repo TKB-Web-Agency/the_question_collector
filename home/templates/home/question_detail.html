@@ -5,6 +5,11 @@
 
 <div class="grid place-items-center text-center">
 	<h1 class="p-3 text-indigo-100 text-lg max-w-prose">{{ object.title }}</h1>
+	<div class="">
+		{% for testing in object.categories.all %}
+			<a class="text-indigo-400 ml-3 hover:underline" href="{% url 'home:filter_category' slug=testing.slug %}">{{testing.title}}</a>
+		{% endfor %}
+	</div>
 </div>
 
 <div class="mr-12 grid place-items-end">
