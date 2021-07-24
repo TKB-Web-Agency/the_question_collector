@@ -4,17 +4,24 @@
 {% block content %}
 
 <div class="grid place-items-center text-center">
+	<div class="mt-12 max-w-prose">
 	<h1 class="p-3 text-indigo-100 text-lg max-w-prose">{{ object.title }}</h1>
-	<div class="">
+	<div class="mt-6 flex justify-between">
+	<div class="w-52">
 		{% for testing in object.categories.all %}
-			<a class="text-indigo-400 ml-3 hover:underline" href="{% url 'home:filter_category' slug=testing.slug %}">{{testing.title}}</a>
+			<a class="text-indigo-400 ml-3 hover:underline" href="{% url 'home:filter_by' slug=testing.slug %}">{{testing.title}}</a>
 		{% endfor %}
+	</div>
+	<div class="ml-12 grid place-items-end">
+		<a class="text-indigo-300 hover:underline" href="{% url 'accounts:profile' author=object.submitted %}">Submitted By: {{ object.submitted }}</a>
+		<p class="text-indigo-700">Original Author: {{ object.original_author }}</p>
+		<p class="text-gray-800 hover:text-gray-600">{{ object.date_created }}</p>
+	</div>
+	</div>
 	</div>
 </div>
 
-<div class="mr-12 grid place-items-end">
-	<a class="text-indigo-300" href="{% url 'accounts:profile' author=object.author %}">{{ object.author }}</a>
-	<p class="text-gray-800 hover:text-gray-600">{{ object.date_created }}</p>
+<div class="mr-12 grid">
 </div>
 
 
