@@ -1,21 +1,13 @@
 {% extends "home/base.html" %}
 
 {% block content %}
-<div>
-	{% for question in question_list %}
-	
-	{% if question.hidden != True %}
-	<ul class="p-5 md:pl-12">
-		<li>
-			<a href="{% url 'home:question_detail' question.slug %}">
-				<p class="text-xl text-indigo-100 max-w-prose">{{ question.title }}</p>
-			</a>
-		</li>
-	</ul>
-	{% endif %}
-	{% endfor %}
+{% if category %}
+<div class="mt-12 grid place-items-center">
+<h1 class="text-indigo-200 text-2xl">Questions Filtered By: {{ category }}</h1>
 </div>
+{% endif %}
 
+{% include 'home/question_list.html' %}
 
 {% endblock %}
 

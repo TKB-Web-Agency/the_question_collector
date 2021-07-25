@@ -32,7 +32,8 @@ def filter(request, slug):
     queryset = Question.objects.filter(categories=category.id)
 
     context = {
-        'question_list': queryset,
+            'category': category.title,
+            'question_list': queryset,
         }
 
     return render(request, 'home/homepage.html', context)
