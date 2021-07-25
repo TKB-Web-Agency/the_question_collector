@@ -3,6 +3,8 @@
 {% block content %}
 <div>
 	{% for question in question_list %}
+	
+	{% if question.hidden != True %}
 	<ul class="p-5 md:pl-12">
 		<li>
 			<a href="{% url 'home:question_detail' question.slug %}">
@@ -10,6 +12,7 @@
 			</a>
 		</li>
 	</ul>
+	{% endif %}
 	{% endfor %}
 </div>
 

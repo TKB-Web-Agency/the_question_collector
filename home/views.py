@@ -88,3 +88,6 @@ def add_new_category(request):
 
     return render(request, 'home/add_new_category.html', {'form': form})
 
+##TODO: This shoud be done in react instead. Otherwise it will need to be rewritten. 
+def report_question(request):
+    return HttpResponseRedirect('/')
