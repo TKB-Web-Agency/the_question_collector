@@ -28,7 +28,7 @@ class Questions(generic.ListView):
 #    template_name = 'home/question_detail.html'
 
 def filter(request, slug):
-    category = Categories.objects.get(slug=category_slug)
+    category = Categories.objects.get(slug=slug)
     queryset = Question.objects.filter(categories=category.id)
 
     context = {
