@@ -1,10 +1,11 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-<div class="pb-12 grid place-items-center">
+<div class="block w-full mx-6">
 
-	<div class="w-full md:w-[42rem] grid place-items-center">
-		<div class="mt-3 mb-1 mx-3 rounded-lg bg-gray-700 text-gray-300 w-11/12 md:w-full">
+	<!-- Profile box -->
+	<section class="w-full grid place-items-center">
+		<div class="mt-3 mb-1 mx-3 text-gray-300 w-11/12 md:w-full">
 			<div class="flex items-center">
 				<div class="w-20 h-20 rounded-full overflow-hidden mt-6 ml-6">
 					<img class="h-20 object-cover" src="{{ author.picture }}" alt="">
@@ -55,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="mx-6 px-2 rounded-md bg-gray-800 text-gray-300">
+			<div class="mx-6 px-2 rounded-md bg-gray-00 text-gray-300">
 				<p class="text-gray-300 my-3 py-3">{{ author.about| safe }}</p>
 			</div>
 			{% if user.is_authenticated and user == author %}
@@ -63,12 +64,12 @@
 				<a class="rounded-lg p-3 bg-gray-500" href="{% url 'accounts:edit_profile' author=author   %}">Edit Profile</a>
 			</div>
 			{% endif %} 
-		</div>
+		</section>
 
 <section class="mx-auto mt-6">
-	<h1 class="pb-3 text-xl text-center text-indigo-300 border-b-2 border-indigo-300">Questions submitted by: {{ author.username }}</h1>
+	<h1 class="pb-3 text-xl text-center text-indigo-300">Questions submitted by: {{ author.username }}</h1>
 	{% include 'home/question_list.html' %}
 </section>
 
-	</div>
-	{% endblock %}
+		</div>
+		{% endblock %}

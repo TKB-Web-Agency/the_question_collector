@@ -1,14 +1,15 @@
 {% extends "home/base.html" %}
 
 {% block content %}
+<section class="mt-12 ml-2 md:ml-6 block">
 {% if category %}
-<div class="mt-12 grid place-items-center">
+<div class="">
 <h1 class="text-indigo-200 text-2xl">Questions Filtered By: {{ category }}</h1>
 </div>
 {% endif %}
 
 {% include 'home/question_list.html' %}
-
+</section>
 {% endblock %}
 
 

@@ -1,14 +1,16 @@
 {% load tailwind_tags %}
 {% tailwind_css %}
 <meta content="width=device-width, initial-scale=1" name="viewport" />
-<body class="bg-gray-900 dark:bg-gray-800">
+<body class="bg-gray-900">
 
 	{% include 'home/header.html' %}
+	<section class="flex justify-between">
 
 	{% block content %}
 	{% endblock %}
 
-
+	{% include 'home/sidebar.html' %}
+</section>
 
 </body>
 

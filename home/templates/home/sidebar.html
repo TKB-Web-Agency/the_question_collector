@@ -1,0 +1,14 @@
+<section class="hidden md:block bg-gray-700 shadow-lg h-screen rounded-sm px-6 py-3 w-52 text-center">
+	<h1 class="text-xl text-gray-300">Categories</h1>
+	{% for category in all_categories %}
+	
+	<ul class="">
+		<li class="py-2">
+			<a href="{% url 'home:filter_by' slug=category.slug %}">
+				<p class="py-1 bg-gray-600 rounded-lg text-md text-indigo-100 min-w-min">{{ category.title }}</p>
+			</a>
+		</li>
+	</ul>
+	{% endfor %}
+
+</section>
