@@ -3,9 +3,9 @@
 	
 	{% if question.hidden != True %}
 	<ul class="md:pl-12">
-		<li class="py-4">
-			<a href="{% url 'home:question_detail' question.slug %}">
-				<p class="text-xl text-indigo-100 max-w-prose">{{ question.title }}</p>
+		<li class="py-4 max-w-prose">
+			<a class="text-xl text-indigo-100 hover:underline" href="{% url 'home:question_detail' question.slug %}">
+				{{ question.title }}
 			</a>
 		</li>
 	</ul>
