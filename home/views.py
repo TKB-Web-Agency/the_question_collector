@@ -62,7 +62,7 @@ def add_new_question(request):
             else:
                 user = CustomUser.objects.get(uuid='bfd9134b-30f7-4645-9184-805084758b9c')
 
-            new_item = Question.objects.create(title=question_title, slug=slug, author=user, date_created=datetime.datetime.now())
+            new_item = Question.objects.create(title=question_title, slug=slug, submitted=user, date_created=datetime.datetime.now())
             new_item.categories.set(categories)
             new_item.save()
             return HttpResponseRedirect('/')
