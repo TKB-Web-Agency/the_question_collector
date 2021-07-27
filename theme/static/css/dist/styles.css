@@ -868,6 +868,9 @@ select {
 .h-full {
 	height: 100%;
 }
+.h-auto {
+	height: auto;
+}
 .w-full {
 	width: 100%;
 }
