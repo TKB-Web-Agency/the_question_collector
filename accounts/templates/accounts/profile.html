@@ -64,7 +64,11 @@
 			</div>
 			{% endif %} 
 		</div>
+
+<section class="mx-auto mt-6">
+	<h1 class="pb-3 text-xl text-center text-indigo-300 border-b-2 border-indigo-300">Questions submitted by: {{ author.username }}</h1>
+	{% include 'home/question_list.html' %}
+</section>
+
 	</div>
-
-
 	{% endblock %}

@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
 from .forms import MyUserCreationForm, UserUpdateForm
 from .models import CustomUser
+from home.models import Question
 
 #Views Go Here
 class SignUpView(CreateView):
@@ -13,9 +14,11 @@ class SignUpView(CreateView):
 
 def profile(request, author):
     user = CustomUser.objects.get(username=author)
+    queryset = Question.objects.filter(submitted=user)
 
     context = {
-        'author': user
+        'author': user,
+        'question_list': queryset
         }
 
     return render(request, 'accounts/profile.html', context)
