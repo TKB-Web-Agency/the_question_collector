@@ -6,6 +6,7 @@ from accounts.models import CustomUser
 from .forms import QuestionForm, CategoryForm
 import datetime
 from django.utils.text import slugify
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homepage(request):
@@ -71,6 +72,38 @@ def add_new_question(request):
         form = QuestionForm()
 
     return render(request, 'home/add_new_question.html', {'form': form})
+
+@login_required
+def edit_question(request, pk):
+    if request.method == 'GET':
+        instance = get_object_or_404(Question, pk=pk)
+        form = QuestionForm(instance=instance)
+    else: 
+        instance = get_object_or_404(Question, pk=pk)
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question_title = form.cleaned_data['question']
+            slug = slugify(question_title)
+            categories = form.cleaned_data.get("categories")
+
+            post = instance 
+            post.title = question_title
+            post.slug = slug
+            post.submitted = request.user
+            post.date_created = datetime.datetime.now()
+            post.categories.set(categories)
+            post.save()
+
+        return HttpResponseRedirect('/')
+
+    context = {
+            'form': form,
+            'instance': instance,
+            'pk': pk,
+            'url': 'edit'
+            }
+        
+    return render(request, 'home/add_new_question.html', context)
 
 def add_new_category(request):
     if request.method == 'POST':

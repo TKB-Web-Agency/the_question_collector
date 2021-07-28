@@ -1115,6 +1115,10 @@ select {
 	padding-top: 3rem;
 	padding-bottom: 3rem;
 }
+.px-3 {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
 .pb-12 {
 	padding-bottom: 3rem;
 }
@@ -1243,6 +1247,10 @@ select {
 .text-gray-900 {
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+.text-black {
+	--tw-text-opacity: 1;
+	color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;

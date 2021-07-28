@@ -19,6 +19,9 @@
 	</div>
 	</div>
 	</div>
+	{% if user.is_authenticated and user == object.submitted %}
+	<a class="px-3 py-2 rounded-lg bg-gray-300 text-black hover:underline" href="{% url 'home:edit_question' pk=object.pk %}">Edit Question</a>
+	{% endif %}
 </div>
 
 <div class="mr-12 grid">

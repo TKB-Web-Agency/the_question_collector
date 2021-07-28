@@ -4,22 +4,26 @@
 {% block content %}
 
 
-	<div class="grid grid-cols-1 place-items-center p-8">
-		{% if user.is_authenticated %}
-		{% else %}
-			<p class="text-red-500 opacity-70">You are not currently logged in, if you submit a question it will be anonymous.</p>
-		{% endif %}
-		<p class="text-indigo-100 text-2xl mt-6 m-3" >Add New Question</p>
-		<div class="flex">
-		<form action="{% url 'home:add_new_question' %}" method="post">
-			{% csrf_token %}
-			{{ form.question|add_class:"w-full rounded-lg bg-transparent text-indigo-100 border-2 border-ingigo-200 focus:ring-0" }}
-			<p class="mt-6 text-indigo-100 font-semibold text-lg">What categories does this question belong to?</p>
-			{{ form.categories|add_class:"ml-3 rounded-full checked:bg-blue-500 text-indigo-100" }}
-			<a class="float-left m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" href="{% url 'home:add_new_category' %}" >Add New Category</a>
-			<button class="float-right m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" type="submit">Save Question</button>
-		</form>
-		</div>
+<div class="grid grid-cols-1 place-items-center p-8">
+	{% if user.is_authenticated %}
+	{% else %}
+	<p class="text-red-500 opacity-70">You are not currently logged in, if you submit a question it will be anonymous.</p>
+	{% endif %}
+	<p class="text-indigo-100 text-2xl mt-6 m-3" >Add New Question</p>
+	<div class="flex">
+		{% if url == "edit" %}
+		<form action="{% url 'home:edit_question' pk=pk %}" method="post">
+			{% else %}
+			<form action="{% url 'home:add_new_question' %}" method="post">
+				{% endif %}
+				{% csrf_token %}
+				{{ form.question|add_class:"w-full rounded-lg bg-transparent text-indigo-100 border-2 border-ingigo-200 focus:ring-0" }}
+				<p class="mt-6 text-indigo-100 font-semibold text-lg">What categories does this question belong to?</p>
+				{{ form.categories|add_class:"ml-3 rounded-full checked:bg-blue-500 text-indigo-100" }}
+				<a class="float-left m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" href="{% url 'home:add_new_category' %}" >Add New Category</a>
+				<button class="float-right m-3 md:mr-6 p-2 bg-blue-200 hover:bg-blue-100 rounded transition ease-in duration-150 shadow-md text-center text-sm text-indigo-800 hover:text-indigo-600" type="submit">Save Question</button>
+			</form>
 	</div>
+</div>
 
 {% endblock %} 
