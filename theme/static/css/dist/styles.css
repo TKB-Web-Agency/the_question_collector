@@ -871,6 +871,9 @@ select {
 .h-auto {
 	height: auto;
 }
+.min-h-screen {
+	min-height: 100vh;
+}
 .w-full {
 	width: 100%;
 }
